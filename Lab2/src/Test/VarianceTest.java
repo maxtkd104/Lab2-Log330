@@ -1,10 +1,6 @@
 package Test;
 
 import static org.junit.Assert.*;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 import Calcul.*;
@@ -14,6 +10,7 @@ public class VarianceTest {
 	String csvLowerBound = "CSV_TEST/LowerBound.csv";
 	String csvUpperBound = "CSV_TEST/UpperBound.csv";
 	String csvInvalide = "CSV_TEST/Invalide.csv";
+	CSVReader reader = new CSVReader();
 	
 	@Test
 	public void testVarianceLowerBound() {
@@ -22,7 +19,7 @@ public class VarianceTest {
 		System.out.println("\n\tTest: Variance LowerBound");
 		double moyenne = 253.9;
 		IMethodeMath variance = new Calcul.Variance();
-		CSVReader reader = new CSVReader();
+		
 		List<String> listData = reader.read(csvLowerBound);
 		double var = variance.calculer(listData, moyenne);
 		
@@ -77,18 +74,8 @@ public class VarianceTest {
 		CSVReader reader = new CSVReader();
 		
 		double var = 0.0;
-		try
-		{
-			List<String> listData = reader.read(csvInvalide);
-			var = variance.calculer(listData, moyenne);
-		}
-		catch(Exception ex)
-		{
-			System.out.println("Erreur: " +ex.getMessage());
-			fail("Erreur: " +ex.getMessage());
-			return;
-		}
-		
+		List<String> listData = reader.read(csvInvalide);
+		var = variance.calculer(listData, moyenne);	
 		
 		
 		String result =String.valueOf(var);

@@ -12,10 +12,8 @@ import Calcul.*;
 public class TestUnitaire {
 
 	List<String> listData = Arrays.asList("10", "186", "699", "132", "272", "291", "331", "199", "1890", "788", "1601");
-	
-	
-	
-	
+	CSVReader reader = new CSVReader();
+		
 	
 	@Test
 	public void testMoyenne() {

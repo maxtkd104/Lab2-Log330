@@ -27,14 +27,14 @@ public class Variance implements IMethodeMath {
 				
 				Distance += value *value;
 			}
+			Variance = (1.0/(arraySize-1))*Distance;
 		}
 		catch(Exception e)
 		{
-			System.out.println("Erreur Variance: " +e.getMessage() + ", on retourne 0.0");
-			return 0.0;
+			Variance = 0.0;
 		}
 		
-		Variance = (1.0/(arraySize-1))*Distance;
+		
 
 		return Variance;
 	}
