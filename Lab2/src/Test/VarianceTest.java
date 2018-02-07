@@ -11,30 +11,33 @@ import Calcul.*;
 
 public class VarianceTest {
 
-	String CSVPath = "data.csv";
+	String csvLowerBound = "CSV_TEST/LowerBound.csv";
+	String csvUpperBound = "CSV_TEST/UpperBound.csv";
+	String csvInvalide = "CSV_TEST/Invalide.csv";
 	
 	@Test
 	public void testVarianceLowerBound() {
 		//assertTrue(true);
 		
-		System.out.println("\n\tTest: Variance");
-		double moyenne = 638.9;
+		System.out.println("\n\tTest: Variance LowerBound");
+		double moyenne = 253.9;
 		IMethodeMath variance = new Calcul.Variance();
 		CSVReader reader = new CSVReader();
-		List<String> listData = reader.read(CSVPath);
+		List<String> listData = reader.read(csvLowerBound);
 		double var = variance.calculer(listData, moyenne);
 		
 		String result =String.valueOf(var);
 		
 		
-		if(result.startsWith("391417.8777"))
+		if(result.startsWith("63057.877"))
 		{
-			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 391417.8778");
+			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 63057.877");
 			
 		}
 		else
 		{
-			fail(result + " ne correspond pas a la valeur attendu 391,417.8778");
+			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: 63057.877");
+			fail(result + " ne correspond pas a la valeur attendu 63057.877");
 		}
 	}
 	
@@ -42,27 +45,63 @@ public class VarianceTest {
 	public void testVarianceUpperBound() {
 		//assertTrue(true);
 		
-		System.out.println("\n\tTest: Variance");
-		double moyenne = 638.9;
+		System.out.println("\n\tTest: Variance UpperBound");
+		double moyenne = 1580.5;
 		IMethodeMath variance = new Calcul.Variance();
 		CSVReader reader = new CSVReader();
-		List<String> listData = reader.read(CSVPath);
+		List<String> listData = reader.read(csvUpperBound);
 		double var = variance.calculer(listData, moyenne);
 		
 		String result =String.valueOf(var);
 		
 		
-		if(result.startsWith("391417.8777"))
+		if(result.startsWith("667524.722"))
 		{
-			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 391417.8778");
+			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 667524.722");
 			
 		}
 		else
 		{
-			fail(result + " ne correspond pas a la valeur attendu 391,417.8778");
+			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: 667524.722");
+			fail(result + " ne correspond pas a la valeur attendu 667524.722");
 		}
 	}
 	
-	
+	@Test
+	public void testVarianceInvalideValue() {
+		//assertTrue(true);
+		
+		System.out.println("\n\tTest: Variance UpperBound");
+		double moyenne = 1580.5;
+		IMethodeMath variance = new Calcul.Variance();
+		CSVReader reader = new CSVReader();
+		List<String> listData = reader.read(csvInvalide);
+		double var = 0.0;
+		try
+		{
+			var = variance.calculer(listData, moyenne);
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Erreur: " +ex.getMessage());
+			fail("Erreur: " +ex.getMessage());
+		}
+		
+		
+		
+		String result =String.valueOf(var);
+		
+		
+		if(result.startsWith("667524.722"))
+		{
+			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 667524.722");
+			
+		}
+		else
+		{
+			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: 667524.722");
+			fail(result + " ne correspond pas a la valeur attendu 667524.722");
+		}
+	}
 
 }
