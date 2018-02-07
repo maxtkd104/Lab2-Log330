@@ -11,7 +11,7 @@ import Calcul.*;
 
 public class VarianceTest {
 
-	String CSVPath = "./Lab2/src/test/data.csv";
+	String CSVPath = "Lab2/src/test/data.csv";
 	
 	@Test
 	public void testVariance() {
