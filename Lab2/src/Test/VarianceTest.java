@@ -19,12 +19,12 @@ public class VarianceTest {
 		IMethodeMath variance = new Calcul.Variance();
 		CSVReader reader = new CSVReader();
 		List<String> listData = reader.read(CSVPath);
-		/*
+		
 		double var = variance.calculer(listData, moyenne);
 		
 		String result =String.valueOf(var);
 		
-		
+		/*
 		if(result.startsWith("391417.8777"))
 		{
 			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 391417.8778");
