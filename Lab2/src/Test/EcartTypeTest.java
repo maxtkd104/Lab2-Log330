@@ -12,6 +12,10 @@ public class EcartTypeTest {
 	String csvInvalide = "CSV_TEST/Invalide.csv";
 	CSVReader reader = new CSVReader();
 
+	
+	/***
+	 * Test de ecart type avec des donnees plus petite
+	 */
 	@Test
 	public void testEcartTypeLowerBound() {
 		System.out.println("\n\tTest: Ecart-Type Lower Bound");
@@ -36,6 +40,10 @@ public class EcartTypeTest {
 			
 	}
 	
+	
+	/***
+	 * Test de ecart type avec des donnees plus Grande
+	 */
 	@Test
 	public void testEcartTypeUpperBound() {
 		System.out.println("\n\tTest: Ecart-Type Upper Bound");
@@ -60,10 +68,13 @@ public class EcartTypeTest {
 			
 	}
 	
+	/***
+	 * Test de ecart type avec des donnees invalide
+	 */
 	@Test
 	public void testEcartTypeInvalide() {
 		System.out.println("\n\tTest: Ecart-Type Invalide");
-		double variance = 391417.8777777777;
+		double variance = 0.0;
 		IMethodeMath ecartType = new EcartType();
 		List<String> listData = reader.read(csvInvalide);
 		double ecart = ecartType.calculer(listData, variance);

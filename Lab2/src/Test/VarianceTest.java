@@ -12,6 +12,10 @@ public class VarianceTest {
 	String csvInvalide = "CSV_TEST/Invalide.csv";
 	CSVReader reader = new CSVReader();
 	
+	
+	/***
+	 * Test de la variance avec des donnees plus petites
+	 */
 	@Test
 	public void testVarianceLowerBound() {
 		//assertTrue(true);
@@ -38,6 +42,10 @@ public class VarianceTest {
 		}
 	}
 	
+	
+	/***
+	 * Test de la variance avec des donnees plus Grande
+	 */
 	@Test
 	public void testVarianceUpperBound() {
 		//assertTrue(true);
@@ -64,6 +72,10 @@ public class VarianceTest {
 		}
 	}
 	
+	
+	/***
+	 * Test de la variance avec des donnees invalides
+	 */
 	@Test
 	public void testVarianceInvalideValue() {
 		//assertTrue(true);

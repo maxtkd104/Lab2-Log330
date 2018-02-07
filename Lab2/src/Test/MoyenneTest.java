@@ -12,6 +12,10 @@ public class MoyenneTest {
 	String csvInvalide = "CSV_TEST/Invalide.csv";
 	CSVReader reader = new CSVReader();
 	
+	
+	/***
+	 * Test de la moyenne avec des donnees plus petite
+	 */
 	@Test
 	public void testMoyenneLowerBound() {
 		System.out.println("\n\tTest: Moyenne Lower Bound");
@@ -33,6 +37,9 @@ public class MoyenneTest {
 		}
 	}
 	
+	/***
+	 * Test de la moyenne avec des donnees plus Grande
+	 */
 	@Test
 	public void testMoyenneUpperBound() {
 		System.out.println("\n\tTest: Moyenne Upper Bound");
@@ -54,6 +61,9 @@ public class MoyenneTest {
 		}
 	}
 	
+	/***
+	 * Test de la moyenne avec des donnees invalides
+	 */
 	@Test
 	public void testVarianceInvalideValue() {
 		System.out.println("\n\tTest: Moyenne Invalide");

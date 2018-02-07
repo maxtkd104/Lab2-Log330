@@ -19,10 +19,12 @@ public class EcartType implements IMethodeMath {
 		{
 			DecimalFormat df = new DecimalFormat();
 			df.setMaximumFractionDigits(2);	
-			EcartType = sqrt(inputValue);
+			if(inputValue != 0.0)
+				EcartType = sqrt(inputValue);
 		}
 		catch(Exception ex)
 		{
+			System.out.println(ex.getMessage());
 			EcartType = 0.0;
 		}
 		
