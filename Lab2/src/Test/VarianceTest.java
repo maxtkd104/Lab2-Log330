@@ -26,6 +26,7 @@ public class VarianceTest {
 		if(result.startsWith("391417.8777"))
 		{
 			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 391417.8778");
+			assertTrue(true);
 		}
 		else
 		{
