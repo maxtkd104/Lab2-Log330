@@ -13,17 +13,26 @@ public class Variance implements IMethodeMath {
 	private double Variance;
 	@Override
 	public double calculer(List<String> listDonner, double inputValue) {
-		int arraySize = Integer.parseInt(listDonner.get(0));
-
-		/* VARIANCE */
 		double Distance = 0.0;
-		for(int i = 1; i <= arraySize;i++)
+		int arraySize = Integer.parseInt(listDonner.get(0));
+		try
 		{
-			double value = (Integer.parseInt(listDonner.get(i)) - inputValue);
-			
-			Distance += value *value;
-		}
 		
+
+			/* VARIANCE */
+			
+			for(int i = 1; i <= arraySize;i++)
+			{
+				double value = (Integer.parseInt(listDonner.get(i)) - inputValue);
+				
+				Distance += value *value;
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Erreur Variance: " +e.getMessage() + ", on retourne 0.0");
+			return 0.0;
+		}
 		
 		Variance = (1.0/(arraySize-1))*Distance;
 

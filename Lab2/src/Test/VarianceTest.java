@@ -71,20 +71,22 @@ public class VarianceTest {
 	public void testVarianceInvalideValue() {
 		//assertTrue(true);
 		
-		System.out.println("\n\tTest: Variance UpperBound");
+		System.out.println("\n\tTest: Variance Invalide");
 		double moyenne = 1580.5;
 		IMethodeMath variance = new Calcul.Variance();
 		CSVReader reader = new CSVReader();
-		List<String> listData = reader.read(csvInvalide);
+		
 		double var = 0.0;
 		try
 		{
+			List<String> listData = reader.read(csvInvalide);
 			var = variance.calculer(listData, moyenne);
 		}
 		catch(Exception ex)
 		{
 			System.out.println("Erreur: " +ex.getMessage());
 			fail("Erreur: " +ex.getMessage());
+			return;
 		}
 		
 		
@@ -92,15 +94,15 @@ public class VarianceTest {
 		String result =String.valueOf(var);
 		
 		
-		if(result.startsWith("667524.722"))
+		if(result.startsWith("0.0"))
 		{
-			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 667524.722");
+			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 0.0");
 			
 		}
 		else
 		{
-			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: 667524.722");
-			fail(result + " ne correspond pas a la valeur attendu 667524.722");
+			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: 0.0");
+			fail(result + " ne correspond pas a la valeur attendu 0.0");
 		}
 	}
 
