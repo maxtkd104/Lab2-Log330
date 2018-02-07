@@ -1,6 +1,9 @@
 package Test;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
@@ -8,7 +11,7 @@ import Calcul.*;
 
 public class VarianceTest {
 
-	String CSVPath = "src/test/data.csv";
+	String CSVPath = "./Lab2/src/test/data.csv";
 	
 	@Test
 	public void testVariance() {
@@ -20,7 +23,7 @@ public class VarianceTest {
 		CSVReader reader = new CSVReader();
 		List<String> listData = reader.read(CSVPath);
 		double var = variance.calculer(listData, moyenne);
-		/*
+		
 		String result =String.valueOf(var);
 		
 		
@@ -31,8 +34,8 @@ public class VarianceTest {
 		}
 		else
 		{
-			//fail(result + " ne correspond pas a la valeur attendu 391,417.8778");
-		}*/
+			fail(result + " ne correspond pas a la valeur attendu 391,417.8778");
+		}
 	}
 
 }
