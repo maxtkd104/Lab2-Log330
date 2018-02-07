@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Test;
 import Calcul.*;
 
-public class Variance {
+public class VarianceTest {
 
 	String CSVPath = "./src/test/data.csv";
 	
