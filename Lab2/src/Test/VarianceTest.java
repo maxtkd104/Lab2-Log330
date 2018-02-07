@@ -8,7 +8,7 @@ import Calcul.*;
 
 public class VarianceTest {
 
-	String CSVPath = "./src/test/data.csv";
+	String CSVPath = "src/test/data.csv";
 	
 	@Test
 	public void testVariance() {
@@ -19,7 +19,6 @@ public class VarianceTest {
 		IMethodeMath variance = new Calcul.Variance();
 		CSVReader reader = new CSVReader();
 		List<String> listData = reader.read(CSVPath);
-		
 		double var = variance.calculer(listData, moyenne);
 		/*
 		String result =String.valueOf(var);
