@@ -5,22 +5,24 @@ import java.util.List;
 import org.junit.Test;
 import Calcul.*;
 
-public class MoyenneTest {
+public class EcartTypeTest {
 
 	String csvLowerBound = "CSV_TEST/LowerBound.csv";
 	String csvUpperBound = "CSV_TEST/UpperBound.csv";
 	String csvInvalide = "CSV_TEST/Invalide.csv";
 	CSVReader reader = new CSVReader();
-	
+
 	@Test
-	public void testMoyenneLowerBound() {
-		System.out.println("\n\tTest: Moyenne Lower Bound");
-		IMethodeMath moyenne = new Moyenne();
+	public void testEcartTypeLowerBound() {
+		System.out.println("\n\tTest: Ecart-Type Lower Bound");
+		double variance = 63057.87777777;
+		IMethodeMath ecartType = new EcartType();
 		List<String> listData = reader.read(csvLowerBound);
-		double moy = moyenne.calculer(listData, 0.0);
-		String result =String.valueOf(moy);
+		double ecart = ecartType.calculer(listData, variance);
 		
-		String valeurAttendu = "253.9";
+		String result =String.valueOf(ecart);
+		
+		String valeurAttendu = "251.11";
 		
 		if(result.startsWith(valeurAttendu))
 		{
@@ -31,17 +33,20 @@ public class MoyenneTest {
 			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: " + valeurAttendu);
 			fail(result + " ne correspond pas a la valeur attendu " +valeurAttendu);
 		}
+			
 	}
 	
 	@Test
-	public void testMoyenneUpperBound() {
-		System.out.println("\n\tTest: Moyenne Upper Bound");
-		IMethodeMath moyenne = new Moyenne();
+	public void testEcartTypeUpperBound() {
+		System.out.println("\n\tTest: Ecart-Type Upper Bound");
+		double variance = 667524.72;
+		IMethodeMath ecartType = new EcartType();
 		List<String> listData = reader.read(csvUpperBound);
-		double moy = moyenne.calculer(listData, 0.0);
-		String result =String.valueOf(moy);
+		double ecart = ecartType.calculer(listData, variance);
 		
-		String valeurAttendu = "1580.5";
+		String result =String.valueOf(ecart);
+		
+		String valeurAttendu = "817.02";
 		
 		if(result.startsWith(valeurAttendu))
 		{
@@ -52,15 +57,18 @@ public class MoyenneTest {
 			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: " + valeurAttendu);
 			fail(result + " ne correspond pas a la valeur attendu " +valeurAttendu);
 		}
+			
 	}
 	
 	@Test
-	public void testVarianceInvalideValue() {
-		System.out.println("\n\tTest: Moyenne Invalide");
-		IMethodeMath moyenne = new Moyenne();
+	public void testEcartTypeInvalide() {
+		System.out.println("\n\tTest: Ecart-Type Invalide");
+		double variance = 391417.8777777777;
+		IMethodeMath ecartType = new EcartType();
 		List<String> listData = reader.read(csvInvalide);
-		double moy = moyenne.calculer(listData, 0.0);
-		String result =String.valueOf(moy);
+		double ecart = ecartType.calculer(listData, variance);
+		
+		String result =String.valueOf(ecart);
 		
 		String valeurAttendu = "0.0";
 		
@@ -73,6 +81,6 @@ public class MoyenneTest {
 			System.out.println("Erreur: La valeur " + result + " ne correspond pas a la valeur attendu: " + valeurAttendu);
 			fail(result + " ne correspond pas a la valeur attendu " +valeurAttendu);
 		}
+			
 	}
-
 }

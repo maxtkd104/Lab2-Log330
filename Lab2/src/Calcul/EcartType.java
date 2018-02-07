@@ -15,9 +15,17 @@ public class EcartType implements IMethodeMath {
 	@Override
 	public double calculer(List<String> listDonner, double inputValue) {
 		
-		DecimalFormat df = new DecimalFormat();
-		df.setMaximumFractionDigits(2);	
-		EcartType = sqrt(inputValue);
+		try
+		{
+			DecimalFormat df = new DecimalFormat();
+			df.setMaximumFractionDigits(2);	
+			EcartType = sqrt(inputValue);
+		}
+		catch(Exception ex)
+		{
+			EcartType = 0.0;
+		}
+		
 		return EcartType;
 		
 	}

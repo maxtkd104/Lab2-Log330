@@ -52,7 +52,7 @@ public class VarianceTest {
 		String result =String.valueOf(var);
 		
 		
-		if(result.startsWith("667524.722"))
+		if(result.startsWith("667524.72"))
 		{
 			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 667524.722");
 			
