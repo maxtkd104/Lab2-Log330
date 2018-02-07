@@ -15,16 +15,16 @@ public class VarianceTest {
 		//assertTrue(true);
 		
 		System.out.println("\n\tTest: Variance");
-		double moyenne = 638.9000000000001;
+		double moyenne = 638.9;
 		IMethodeMath variance = new Calcul.Variance();
 		CSVReader reader = new CSVReader();
 		List<String> listData = reader.read(CSVPath);
 		
 		double var = variance.calculer(listData, moyenne);
-		
+		/*
 		String result =String.valueOf(var);
 		
-		/*
+		
 		if(result.startsWith("391417.8777"))
 		{
 			System.out.println("Succes: La valeur " + result + " correspond a la valeur attendu: 391417.8778");
