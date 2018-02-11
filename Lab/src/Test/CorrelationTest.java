@@ -23,7 +23,7 @@ public class CorrelationTest {
 		List<String> listData = reader.read(csvLowerBound);
 		double correlation = correlation.calculer(listData, 0.0);
 		
-		String result =String.valueOf(ecart);
+		String result =String.valueOf(correlation);
 		
 		String valeurAttendu = "0.91227001418853";
 		
@@ -50,7 +50,7 @@ public class CorrelationTest {
 		List<String> listData = reader.read(csvUpperBound);
 		double correlation = correlation.calculer(listData, 0.0);
 		
-		String result =String.valueOf(ecart);
+		String result =String.valueOf(correlation);
 		
 		String valeurAttendu = "817.02";
 		
