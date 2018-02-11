@@ -21,9 +21,9 @@ public class CorrelationTest {
 		System.out.println("\n\tTest: Ecart-Type Lower Bound");
 		IMethodeMath correlation = new Correlation();
 		List<String> listData = reader.read(csvLowerBound);
-		double correlation = correlation.calculer(listData, 0.0);
+		double corre = correlation.calculer(listData, 0.0);
 		
-		String result =String.valueOf(correlation);
+		String result =String.valueOf(corre);
 		
 		String valeurAttendu = "0.91227001418853";
 		
@@ -44,15 +44,15 @@ public class CorrelationTest {
 	 * Test de correlation avec des donnees plus Grande
 	 */
 	@Test
-	public void testCorrelationeUpperBound() {
+	public void testCorrelationUpperBound() {
 		System.out.println("\n\tTest: Ecart-Type Upper Bound");
 		IMethodeMath correlation = new Correlation();
 		List<String> listData = reader.read(csvUpperBound);
-		double correlation = correlation.calculer(listData, 0.0);
+		double corre = correlation.calculer(listData, 0.0);
 		
-		String result =String.valueOf(correlation);
+		String result =String.valueOf(corre);
 		
-		String valeurAttendu = "817.02";
+		String valeurAttendu = "0.13244518444069";
 		
 		if(result.startsWith(valeurAttendu))
 		{
@@ -74,9 +74,9 @@ public class CorrelationTest {
 		System.out.println("\n\tTest: Correlation Invalide");
 		IMethodeMath correlation = new Correlation();
 		List<String> listData = reader.read(csvInvalide);
-		double correlation = correlation.calculer(listData, 0.0);
+		double corre = correlation.calculer(listData, 0.0);
 		
-		String result =String.valueOf(correlation);
+		String result =String.valueOf(corre);
 		
 		String valeurAttendu = "0.0";
 		

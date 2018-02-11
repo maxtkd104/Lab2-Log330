@@ -68,10 +68,12 @@ public class main {
 				
 				fc.showOpenDialog(frame);
 				fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-				absolutePath = fc.getSelectedFile().getAbsolutePath();
 				
-				if(fc.getSelectedFile() !=null)
+				
+				if(fc.getSelectedFile() != null)
 				{
+					absolutePath = fc.getSelectedFile().getAbsolutePath();
+					
 					DecimalFormat df = new DecimalFormat();
 					df.setMaximumFractionDigits(2);
 					
