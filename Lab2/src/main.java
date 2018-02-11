@@ -5,11 +5,7 @@ import java.util.List;
 
 import javax.swing.*;
 
-import Calcul.IMethodeMath;
-import Calcul.Moyenne;
-import Calcul.CSVReader;
-import Calcul.EcartType;
-import Calcul.Variance;
+import Calcul.*;
 
 
 public class main {
@@ -18,6 +14,7 @@ public class main {
 	private static IMethodeMath Moyenne;
 	private static IMethodeMath Variance;
 	private static IMethodeMath EcartType;
+	private static IMethodeMath Correlation;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -26,6 +23,7 @@ public class main {
 		Moyenne = new Moyenne();
 		Variance = new Variance();
 		EcartType = new EcartType();
+		Correlation = new Correlation();
 		createWindow();
 	}
 	
@@ -47,6 +45,7 @@ public class main {
 		JLabel labelVariance = new JLabel("");
 		JLabel labelEcartType= new JLabel("");
 		JLabel labelDataList = new JLabel("");
+		JLabel labelCorrelation = new JLabel("");
 		
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
@@ -84,22 +83,60 @@ public class main {
 						if(absolutePath.endsWith(".csv"))
 						{
 							data = CSV.read(absolutePath);
-							Moyenne.calculer(data,0.0);
-							Variance.calculer(data, Moyenne.get());
-							EcartType.calculer(data, Variance.get());
 							
-							labelMoyenne.setText("Moyenne: " + String.valueOf(df.format(Moyenne.get())));
-							labelVariance.setText("Variance: " + String.valueOf(df.format(Variance.get())));
-							labelEcartType.setText("Ecart-Type: " + String.valueOf(df.format(EcartType.get())));
+							panel.add(labelDataList);
+							panel.add(labelMoyenne);
+							panel.add(labelVariance);
+							panel.add(labelEcartType);
+							panel.add(labelCorrelation);
 							
-							String textLabelData = "<html>Valeurs du fichier CSV:";
-							for(int i = 1; i< data.size();i++)
+							
+							
+						
+							//Fichier CSV a plusieurs Colone
+							if(!CSV.isCorrelation())
 							{
-								textLabelData += "<br/>" + data.get(i);
+								Moyenne.calculer(data,0.0);
+								Variance.calculer(data, Moyenne.get());
+								EcartType.calculer(data, Variance.get());
+								
+								labelMoyenne.setText("Moyenne: " + String.valueOf(df.format(Moyenne.get())));
+								labelVariance.setText("Variance: " + String.valueOf(df.format(Variance.get())));
+								labelEcartType.setText("Ecart-Type: " + String.valueOf(df.format(EcartType.get())));
+								
+								
+								
+								// Affichage des données du fichier CSV
+								String textLabelData = "";
+								textLabelData = "<html>Valeurs du fichier CSV:";
+						
+								for(int i = 1; i< data.size();i++)
+								{
+									textLabelData += "<br/>" + data.get(i);
+								}
+								
+								textLabelData += "<br/><br/></html>";
+								labelDataList.setText(textLabelData);
 							}
-							textLabelData += "<br/><br/></html>";
+							else //On cherche la correlation
+							{
+								labelMoyenne.setText("");
+								labelVariance.setText("");
+								labelEcartType.setText("");
+								labelDataList.setText("");
+								
+								Correlation.calculer(data, 0.0);
+								labelCorrelation.setText("<html>Correlation R:  " + String.valueOf(Correlation.get()) + 
+														 "<br>Correlation R<SUP>2</SUP>: " + String.valueOf(Correlation.get() * Correlation.get()) + 
+														 "</html>");	
+								
+								
+							}
 							
-							labelDataList.setText(textLabelData);
+							
+							
+							
+							
 						}
 						else
 						{
@@ -120,12 +157,7 @@ public class main {
 		
 		
 		//Ajout des composants
-		panel.add(button);
-		panel.add(labelDataList);
-		panel.add(labelMoyenne);
-		panel.add(labelVariance);
-		panel.add(labelEcartType);
-
+        panel.add(button);
 		
 		frame.getContentPane().add(panel);	
 		

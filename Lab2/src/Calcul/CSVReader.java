@@ -7,6 +7,8 @@ import java.util.List;
 
 public class CSVReader {
 
+	
+	private boolean isCorrelation = false;
 	/**
 	 * Lis un fichier CSV ligne par ligne et retourne les donnees sous forme de tableu de int
 	 * 
@@ -20,18 +22,27 @@ public class CSVReader {
 		
 		File file = new File(filePath);
 
-        try{
+        try
+        {
             Scanner inputStream = new Scanner(file);
-            while(inputStream.hasNext()){
+            while(inputStream.hasNext())
+            {
                 String dataText = inputStream.next();
-                data.add(dataText);
+                data.add(dataText.replaceAll(",", "."));
                 //System.out.println(dataText);
 
             }
             inputStream.close();
 
+            
+            String[] parts = data.get(1).split(";");
+            if(parts.length == 2)
+            	isCorrelation = true;
+            
 
-        }catch (FileNotFoundException e){
+        }
+        catch (FileNotFoundException e)
+        {
 
             e.printStackTrace();
         }
@@ -39,6 +50,14 @@ public class CSVReader {
 		
 		
 		return data;
+	}
+	
+	
+	/**
+	 * @return the isCorrelation
+	 */
+	public boolean isCorrelation() {
+		return isCorrelation;
 	}
 	
 }

@@ -1,5 +1,4 @@
 package Calcul;
-import java.text.DecimalFormat;
 import java.util.List;
 
 /**
