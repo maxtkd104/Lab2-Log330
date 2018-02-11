@@ -47,6 +47,8 @@ public class main {
 		JLabel labelDataList = new JLabel("");
 		JLabel labelCorrelation = new JLabel("");
 		
+		AffichageHTML html = new AffichageHTML();
+		
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frame.setSize(400, 400);
@@ -92,6 +94,11 @@ public class main {
 							panel.add(labelEcartType);
 							panel.add(labelCorrelation);
 							
+							labelMoyenne.setText("");
+							labelVariance.setText("");
+							labelEcartType.setText("");
+							labelDataList.setText("");
+							labelCorrelation.setText("");
 							
 							
 						
@@ -109,16 +116,8 @@ public class main {
 								
 								
 								// Affichage des donnees du fichier CSV
-								String textLabelData = "";
-								textLabelData = "<html>Valeurs du fichier CSV:";
-						
-								for(int i = 1; i< data.size();i++)
-								{
-									textLabelData += "<br/>" + data.get(i);
-								}
 								
-								textLabelData += "<br/><br/></html>";
-								labelDataList.setText(textLabelData);
+								labelDataList.setText(html.affichageCSV1ColoneL(data));
 							}
 							else //On cherche la correlation
 							{
@@ -128,27 +127,12 @@ public class main {
 								labelDataList.setText("");
 								
 								Correlation.calculer(data, 0.0);
+								ValeurCorrelation valeurCorrelation= new ValeurCorrelation();
+					
 								double correlation = Correlation.get();
-								double correlation2 = correlation * correlation;
-								String value =  String.valueOf(correlation);
-								String value2 = String.valueOf(correlation2);
-								String correlationType = "";
+								String valeurNomimal = valeurCorrelation.getNominalValue(correlation);
 								
-								if(correlation >= 0.0  && correlation < 0.2)
-									correlationType = "Nulle à faible";
-								if(correlation >= 0.2  && correlation < 0.4)
-									correlationType = "Faible à moyenne";
-								if(correlation >= 0.4  && correlation < 0.7)
-									correlationType = "Moyenne à forte";
-								if(correlation >= 0.7  && correlation < 0.9)
-									correlationType = "Forte à très forte";
-								if(correlation >= 0.9  && correlation <= 1)
-									correlationType = "Très forte à parfaite";
-								
-								
-								labelCorrelation.setText("<html>Correlation R:  " + value + 
-														 "<br>Correlation R<SUP>2</SUP>: " + value2 + 
-														 "<br>Valeur nominal du lien: " + correlationType + "</html>");	
+								labelCorrelation.setText(html.correlationHTML(correlation, valeurNomimal));	
 								
 								
 							}

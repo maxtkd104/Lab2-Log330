@@ -38,6 +38,8 @@ public class CSVReader {
             String[] parts = data.get(1).split(";");
             if(parts.length == 2)
             	isCorrelation = true;
+            else
+            	isCorrelation = false;
             
 
         }
