@@ -22,8 +22,8 @@ public class Correlation implements IMethodeMath {
 			double sumX = 0.0; //Somme des X
 			double sumY = 0.0; //Somme des Y
 			double sumXY = 0.0; //Somme des X et Y
-			double sumSquareX = 0.0; //Somme des carrés de X
-			double sumSquareY = 0.0; //Somme des carrés de Y
+			double sumSquareX = 0.0; //Somme des carres de X
+			double sumSquareY = 0.0; //Somme des carres de Y
 			
 			//Remplir les tableaux X et Y
 			for(int i = 1; i <= n; i++)
@@ -55,14 +55,14 @@ public class Correlation implements IMethodeMath {
 				sumXY += x*y;
 			}
 			
-			//Calcuer la somme des carrés de X
+			//Calcuer la somme des carres de X
 			for(int x = 0; x < n;x++)
 			{
 				double value = Double.parseDouble(dataX.get(x));
 				sumSquareX += value*value;
 			}
 					
-			//Calcuer la somme des carrés de Y
+			//Calcuer la somme des carres de Y
 			for(int y = 0; y < n;y++)
 			{
 				double value = Double.parseDouble(dataY.get(y));
@@ -73,7 +73,7 @@ public class Correlation implements IMethodeMath {
 			
 			
 			
-			//Calcul de la corrélation
+			//Calcul de la correlation
 			double upper =  (n*sumXY)-(sumX*sumY);
 			double lower = sqrt((n*sumSquareX-(sumX * sumX))*(n*sumSquareY-(sumY * sumY)));
 			correlation = upper / lower;
@@ -107,7 +107,7 @@ public class Correlation implements IMethodeMath {
 		return correlation;
 	}
 	
-	//Retrouner les données en HTML
+	//Retrouner les donnees en HTML
 	
 	/*public String htmlArrayText()
 	{
@@ -122,11 +122,11 @@ public class Correlation implements IMethodeMath {
 			   <tr>
 			       <td>Michelle</td>
 			       <td>26 ans</td>
-			       <td>États-Unis</td>
+			       <td>etats-Unis</td>
 			   </tr>
 			</table>
 		 
-		// Affichage des données du fichier CSV
+		// Affichage des donnees du fichier CSV
 		String output = "";
 		if(n > 0 )
 		{
