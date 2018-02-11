@@ -106,7 +106,7 @@ public class main {
 								
 								
 								
-								// Affichage des données du fichier CSV
+								// Affichage des donnees du fichier CSV
 								String textLabelData = "";
 								textLabelData = "<html>Valeurs du fichier CSV:";
 						
