@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<project name="Lab2" default="test" basedir=".">
-  <property name="src.dir" location="Lab2/src" />
+<project name="Lab" default="test" basedir=".">
+  <property name="src.dir" location="Lab/src" />
   <property name="lib.dir" location="lib" />
   <property name="build.dir" location="bin" />
-  <property name="test.dir" location="Lab2/src" />
+  <property name="test.dir" location="Lab/src" />
   <property name="test.report.dir" location="testreport" />
 
   <path id="junit.class.path">
@@ -43,6 +43,6 @@
   </target>
 
   <target name="test" depends="junit">
-    <description>Lab2 Test</description>
+    <description>Lab Test</description>
   </target>
 </project> 
