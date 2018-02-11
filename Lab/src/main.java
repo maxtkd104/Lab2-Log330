@@ -128,9 +128,27 @@ public class main {
 								labelDataList.setText("");
 								
 								Correlation.calculer(data, 0.0);
-								labelCorrelation.setText("<html>Correlation R:  " + String.valueOf(Correlation.get()) + 
-														 "<br>Correlation R<SUP>2</SUP>: " + String.valueOf(Correlation.get() * Correlation.get()) + 
-														 "</html>");	
+								double correlation = Correlation.get();
+								double correlation2 = correlation * correlation;
+								String value =  String.valueOf(correlation);
+								String value2 = String.valueOf(correlation2);
+								String correlationType = "";
+								
+								if(correlation >= 0.0  && correlation < 0.2)
+									correlationType = "Nulle à faible";
+								if(correlation >= 0.2  && correlation < 0.4)
+									correlationType = "Faible à moyenne";
+								if(correlation >= 0.4  && correlation < 0.7)
+									correlationType = "Moyenne à forte";
+								if(correlation >= 0.7  && correlation < 0.9)
+									correlationType = "Forte à très forte";
+								if(correlation >= 0.9  && correlation <= 1)
+									correlationType = "Très forte à parfaite";
+								
+								
+								labelCorrelation.setText("<html>Correlation R:  " + value + 
+														 "<br>Correlation R<SUP>2</SUP>: " + value2 + 
+														 "<br>Valeur nominal du lien: " + correlationType + "</html>");	
 								
 								
 							}
