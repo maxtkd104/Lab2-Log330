@@ -108,7 +108,7 @@ public class main {
 
                 // Affichage des donnees du fichier CSV
 
-                labelDataList.setText(html.affichageCSV1ColoneL(data));
+                labelDataList.setText(html.affichageCSV1Colone(data));
               } else // On cherche la correlation
               {
                 labelMoyenne.setText("");

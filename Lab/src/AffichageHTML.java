@@ -17,7 +17,7 @@ public class AffichageHTML {
         + "<br>Valeur nominal du lien: " + valeurNominal + "</html>";
   }
 
-  public String affichageCSV1ColoneL(List<String> data) {
+  public String affichageCSV1Colone(List<String> data) {
     String textLabelData = "";
     textLabelData = "<html>Valeurs du fichier CSV:";
 
