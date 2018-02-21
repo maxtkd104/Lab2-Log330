@@ -29,7 +29,6 @@ public class CSVReader {
             {
                 String dataText = inputStream.next();
                 data.add(dataText.replaceAll(",", "."));
-                //System.out.println(dataText);
 
             }
             inputStream.close();
