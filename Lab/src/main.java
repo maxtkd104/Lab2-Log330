@@ -130,7 +130,7 @@ public class main {
 
 
             } else {
-              throw new Exception("Erreur: Le fichier sélectionné n'est pas un fichier CSV.");
+              throw new Exception("Erreur: Le fichier selectionne n'est pas un fichier CSV.");
             }
 
           } catch (Exception ex) {
