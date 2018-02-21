@@ -88,6 +88,7 @@ public class Correlation implements IMethodeMath {
 		return correlation;
 	}
 	
+	
 	private double sqrt(double variance) {
 		double t;
 	 
@@ -106,41 +107,5 @@ public class Correlation implements IMethodeMath {
 		
 		return correlation;
 	}
-	
-	//Retrouner les donnees en HTML
-	
-	/*public String htmlArrayText()
-	{
-		
-		/*
-		 * <table>
-			   <tr>
-			       <td>Carmen</td>
-			       <td>33 ans</td>
-			       <td>Espagne</td>
-			   </tr>
-			   <tr>
-			       <td>Michelle</td>
-			       <td>26 ans</td>
-			       <td>etats-Unis</td>
-			   </tr>
-			</table>
-		 
-		// Affichage des donnees du fichier CSV
-		String output = "";
-		if(n > 0 )
-		{
-			output = "<table><tr><b><td>X</td><td>Y</td>";
-		
-			for(int i = 1; i< n*2;i++)
-			{
-				output += "<tr><td>" + dataX.get(i) + "</td><td>" + dataY.get(i) + "</td></tr>";
-			}
-			output += "</table>";
-		}
-		
-		output+= "</html>";
-		return output;
-	}*/
 
 }
