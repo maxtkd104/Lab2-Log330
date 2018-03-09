@@ -1,5 +1,6 @@
 package Calcul;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.List;
 public class CSVReader {
 
 
-  private boolean isCorrelation = false;
+  private int rowCount = 0;
 
   /**
    * Lis un fichier CSV ligne par ligne et retourne les donnees sous forme de tableu de int
@@ -34,10 +35,7 @@ public class CSVReader {
 
 
       String[] parts = data.get(1).split(";");
-      if (parts.length == 2)
-        isCorrelation = true;
-      else
-        isCorrelation = false;
+      rowCount = parts.length;
 
 
     } catch (FileNotFoundException e) {
@@ -54,8 +52,8 @@ public class CSVReader {
   /**
    * @return the isCorrelation
    */
-  public boolean isCorrelation() {
-    return isCorrelation;
+  public int getRowCount() {
+    return rowCount;
   }
 
 }

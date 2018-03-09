@@ -1,3 +1,4 @@
+package Main;
 /**
  * Cette calsse permet de determiner la valeur du lien nominal d'une correlation
  * 
