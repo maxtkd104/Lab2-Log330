@@ -3,26 +3,26 @@ package Test;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
-
 import Calcul.*;
 
 public class MoyenneTest {
 
-  String csvLowerBound = "CSV_TEST/LowerBound.csv";
-  String csvUpperBound = "CSV_TEST/UpperBound.csv";
-  String csvInvalide = "CSV_TEST/Invalide.csv";
+  String csvLowerBound = "CSV/TEST_VARIANCE/LowerBound.csv";
+  String csvUpperBound = "CSV/TEST_VARIANCE/UpperBound.csv";
+  String csvInvalide = "CSV/TEST_VARIANCE//Invalide.csv";
   CSVReader reader = new CSVReader();
 
-
   /***
-   * Test de la moyenne avec des donnees plus petite
+   * Test de la Moyenne avec des donnees plus petite
    */
   @Test
-  public void testMoyenneLowerBound() {
+  public void testeMoyenneLowerBound() {
     System.out.println("\n\tTest: Moyenne Lower Bound");
     IMethodeMath moyenne = new Moyenne();
-    List<String> listData = reader.read(csvLowerBound);
-    double moy = moyenne.calculer(listData, 0.0);
+    reader.setPath(csvLowerBound);
+    List<String> listData = reader.read(null);
+    moyenne.calculer(listData, 0.0);
+    double moy = moyenne.getValue();
     String result = String.valueOf(moy);
 
     String valeurAttendu = "253.9";
@@ -44,8 +44,10 @@ public class MoyenneTest {
   public void testMoyenneUpperBound() {
     System.out.println("\n\tTest: Moyenne Upper Bound");
     IMethodeMath moyenne = new Moyenne();
-    List<String> listData = reader.read(csvUpperBound);
-    double moy = moyenne.calculer(listData, 0.0);
+    reader.setPath(csvUpperBound);
+    List<String> listData = reader.read(null);
+    moyenne.calculer(listData, 0.0);
+    double moy = moyenne.getValue();
     String result = String.valueOf(moy);
 
     String valeurAttendu = "1580.5";
@@ -64,11 +66,13 @@ public class MoyenneTest {
    * Test de la moyenne avec des donnees invalides
    */
   @Test
-  public void testVarianceInvalideValue() {
+  public void testMoyenneInvalideValue() {
     System.out.println("\n\tTest: Moyenne Invalide");
     IMethodeMath moyenne = new Moyenne();
-    List<String> listData = reader.read(csvInvalide);
-    double moy = moyenne.calculer(listData, 0.0);
+    reader.setPath(csvInvalide);
+    List<String> listData = reader.read(null);
+    moyenne.calculer(listData, 0.0);
+    double moy = moyenne.getValue();
     String result = String.valueOf(moy);
 
     String valeurAttendu = "0.0";

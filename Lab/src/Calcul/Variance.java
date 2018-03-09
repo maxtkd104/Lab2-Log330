@@ -11,10 +11,11 @@ import java.util.List;
  */
 public class Variance implements IMethodeMath {
 
-  private double Variance;
+  private String Variance;
+  private double VarianceValue;
 
   @Override
-  public double calculer(List<String> listDonner, double inputValue) {
+  public void calculer(List<String> listDonner, double inputValue) {
     double Distance = 0.0;
     int arraySize = Integer.parseInt(listDonner.get(0));
     try {
@@ -27,18 +28,25 @@ public class Variance implements IMethodeMath {
 
         Distance += value * value;
       }
-      Variance = (1.0 / (arraySize - 1)) * Distance;
+      VarianceValue = (1.0 / (arraySize - 1)) * Distance;
     } catch (Exception e) {
-      Variance = 0.0;
+      VarianceValue = 0.0;
     }
 
+    DecimalFormat df = new DecimalFormat();
+    df.setMaximumFractionDigits(5);
+    Variance = df.format(VarianceValue);
+  }
 
 
+  @Override
+  public String getString() {
     return Variance;
   }
 
-  public double get() {
-    return Variance;
+  @Override
+  public double getValue() {
+    return VarianceValue;
   }
 
 }

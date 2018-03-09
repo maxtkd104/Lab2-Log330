@@ -3,14 +3,13 @@ package Test;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
-
 import Calcul.*;
 
 public class EcartTypeTest {
 
-  String csvLowerBound = "CSV_TEST/LowerBound.csv";
-  String csvUpperBound = "CSV_TEST/UpperBound.csv";
-  String csvInvalide = "CSV_TEST/Invalide.csv";
+  String csvLowerBound = "CSV/TEST_VARIANCE/LowerBound.csv";
+  String csvUpperBound = "CSV/TEST_VARIANCE/UpperBound.csv";
+  String csvInvalide = "CSV/TEST_VARIANCE/Invalide.csv";
   CSVReader reader = new CSVReader();
 
 
@@ -22,8 +21,10 @@ public class EcartTypeTest {
     System.out.println("\n\tTest: Ecart-Type Lower Bound");
     double variance = 63057.87777777;
     IMethodeMath ecartType = new EcartType();
-    List<String> listData = reader.read(csvLowerBound);
-    double ecart = ecartType.calculer(listData, variance);
+    reader.setPath(csvLowerBound);
+    List<String> listData = reader.read(null);
+    ecartType.calculer(listData, variance);
+    double ecart = ecartType.getValue();
 
     String result = String.valueOf(ecart);
 
@@ -49,8 +50,10 @@ public class EcartTypeTest {
     System.out.println("\n\tTest: Ecart-Type Upper Bound");
     double variance = 667524.72;
     IMethodeMath ecartType = new EcartType();
-    List<String> listData = reader.read(csvUpperBound);
-    double ecart = ecartType.calculer(listData, variance);
+    reader.setPath(csvUpperBound);
+    List<String> listData = reader.read(null);
+    ecartType.calculer(listData, variance);
+    double ecart = ecartType.getValue();
 
     String result = String.valueOf(ecart);
 
@@ -75,8 +78,10 @@ public class EcartTypeTest {
     System.out.println("\n\tTest: Ecart-Type Invalide");
     double variance = 0.0;
     IMethodeMath ecartType = new EcartType();
-    List<String> listData = reader.read(csvInvalide);
-    double ecart = ecartType.calculer(listData, variance);
+    reader.setPath(csvInvalide);
+    List<String> listData = reader.read(null);
+    ecartType.calculer(listData, variance);
+    double ecart = ecartType.getValue();
 
     String result = String.valueOf(ecart);
 

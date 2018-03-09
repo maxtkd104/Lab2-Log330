@@ -3,16 +3,14 @@ package Test;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
-
 import Calcul.*;
 
 public class CorrelationTest {
 
-  String csvLowerBound = "CSV_TEST_CORRELATION/LowerBound.csv";
-  String csvUpperBound = "CSV_TEST_CORRELATION/UpperBound.csv";
-  String csvInvalide = "CSV_TEST_CORRELATION/Invalide.csv";
+  String csvLowerBound = "CSV/TEST_CORRELATION/LowerBound.csv";
+  String csvUpperBound = "CSV/TEST_CORRELATION/UpperBound.csv";
+  String csvInvalide = "CSV/TEST_CORRELATION/Invalide.csv";
   CSVReader reader = new CSVReader();
-
 
   /***
    * Test de correlation avec des donnees plus petite
@@ -21,8 +19,10 @@ public class CorrelationTest {
   public void testCorrelationLowerBound() {
     System.out.println("\n\tTest: Ecart-Type Lower Bound");
     IMethodeMath correlation = new Correlation();
-    List<String> listData = reader.read(csvLowerBound);
-    double corre = correlation.calculer(listData, 0.0);
+    reader.setPath(csvLowerBound);
+    List<String> listData = reader.read(null);
+    correlation.calculer(listData, 0.0);
+    double corre = correlation.getValue();
 
     String result = String.valueOf(corre);
 
@@ -39,7 +39,6 @@ public class CorrelationTest {
 
   }
 
-
   /***
    * Test de correlation avec des donnees plus Grande
    */
@@ -47,9 +46,10 @@ public class CorrelationTest {
   public void testCorrelationUpperBound() {
     System.out.println("\n\tTest: Ecart-Type Upper Bound");
     IMethodeMath correlation = new Correlation();
-    List<String> listData = reader.read(csvUpperBound);
-    double corre = correlation.calculer(listData, 0.0);
-
+    reader.setPath(csvUpperBound);
+    List<String> listData = reader.read(null);
+    correlation.calculer(listData, 0.0);
+    double corre = correlation.getValue();
     String result = String.valueOf(corre);
 
     String valeurAttendu = "0.13244518444069";
@@ -72,9 +72,11 @@ public class CorrelationTest {
   public void testCorrelationTypeInvalide() {
     System.out.println("\n\tTest: Correlation Invalide");
     IMethodeMath correlation = new Correlation();
-    List<String> listData = reader.read(csvInvalide);
-    double corre = correlation.calculer(listData, 0.0);
-
+    reader.setPath(csvInvalide);
+    List<String> listData = reader.read(null);
+    correlation.calculer(listData, 0.0);
+    double corre = correlation.getValue();
+    
     String result = String.valueOf(corre);
 
     String valeurAttendu = "0.0";

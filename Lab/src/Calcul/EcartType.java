@@ -12,23 +12,27 @@ import java.util.List;
  */
 public class EcartType implements IMethodeMath {
 
-  private double EcartType;
+  private String EcartType;
+  private double EcartTypeValue;
 
   @Override
-  public double calculer(List<String> listDonner, double inputValue) {
+  public void calculer(List<String> listDonner, double inputValue) {
 
     try {
       DecimalFormat df = new DecimalFormat();
       df.setMaximumFractionDigits(2);
       if (inputValue != 0.0)
-        EcartType = sqrt(inputValue);
+        EcartTypeValue = sqrt(inputValue);
+      else
+        EcartTypeValue = 0.0;
     } catch (Exception ex) {
       System.out.println(ex.getMessage());
-      EcartType = 0.0;
+      EcartTypeValue = 0.0;
     }
 
-    return EcartType;
-
+    DecimalFormat df = new DecimalFormat();
+    df.setMaximumFractionDigits(5);
+    EcartType = df.format(EcartTypeValue);
   }
 
   private double sqrt(double variance) {
@@ -44,8 +48,15 @@ public class EcartType implements IMethodeMath {
     return squareRoot;
   }
 
-  public double get() {
+
+  @Override
+  public String getString() {
     return EcartType;
+  }
+
+  @Override
+  public double getValue() {
+    return EcartTypeValue;
   }
 
 }

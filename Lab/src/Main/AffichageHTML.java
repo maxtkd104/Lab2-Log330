@@ -1,48 +1,48 @@
 package Main;
+
 import java.util.List;
 
 public class AffichageHTML {
 
-	/**
-	 * Html de la correlation pour l'affichage
-	 * 
-	 * @param correlation
-	 * @param valeurNominal
-	 * @return
-	 */
-	public String afficher(List<String> data, int rowCount) {
+  /**
+   * Html de la correlation pour l'affichage
+   * 
+   * @param correlation
+   * @param valeurNominal
+   * @return
+   */
+  public String afficher(List<String> data, int rowCount) {
 
-		String ret = "";
+    String ret = "";
 
-		if (rowCount == 1) {
-			String textLabelData = "";
-			textLabelData = "<html><br/>Valeurs du fichier CSV:";
+    if (rowCount == 1) {
+      String textLabelData = "";
+      textLabelData = "<html><br/>Valeurs du fichier CSV:";
 
-			for (int i = 1; i < data.size(); i++) {
-				textLabelData += "<br/>" + data.get(i);
-			}
+      for (int i = 1; i < data.size(); i++) {
+        textLabelData += "<br/>" + data.get(i);
+      }
 
-			textLabelData += "<br/><br/></html>";
+      textLabelData += "<br/><br/></html>";
 
-			ret = textLabelData;
-		}
-		
-		if (rowCount == 2)
-		{
-			String textLabelData = "";
-			textLabelData = "<html><br/>Valeurs du fichier CSV:";
+      ret = textLabelData;
+    }
 
-			for (int i = 1; i < data.size(); i++) {
-				 String[] parts = data.get(i).split(";");
-				
-				textLabelData += "<br/>" + parts[0] + " - " + parts[1];
-			}
+    if (rowCount == 2) {
+      String textLabelData = "";
+      textLabelData = "<html><br/>Valeurs du fichier CSV:";
 
-			textLabelData += "<br/><br/></html>";
+      for (int i = 1; i < data.size(); i++) {
+        String[] parts = data.get(i).split(";");
 
-			ret = textLabelData;
-		}
+        textLabelData += "<br/>" + parts[0] + " - " + parts[1];
+      }
 
-		return ret;
-	}
+      textLabelData += "<br/><br/></html>";
+
+      ret = textLabelData;
+    }
+
+    return ret;
+  }
 }

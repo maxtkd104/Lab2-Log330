@@ -4,9 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.util.List;
-
 import javax.swing.*;
-
 import Main.AffichageHTML;
 import Main.CreateWindow;
 import Main.ValeurCorrelation;
@@ -14,110 +12,78 @@ import Calcul.*;
 
 public class RegressionListener implements ActionListener {
 
-	JPanel panel;
-	CreateWindow frame;
-	CSVReader csvReader;
-	Regression regression;
-	AffichageHTML html;
+  JPanel panel;
+  CreateWindow frame;
+  CSVReader csvReader;
+  Regression regression;
+  AffichageHTML html;
 
-	public RegressionListener(CreateWindow frame) {
-		this.frame = frame;
-		csvReader = new CSVReader();
-		regression = new Regression();
-		html = new AffichageHTML();
-	}
+  public RegressionListener(CreateWindow frame) {
+    this.frame = frame;
+    csvReader = new CSVReader();
+    regression = new Regression();
+    html = new AffichageHTML();
+  }
 
-	// Creation du panel d'affichage de la regression
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		panel = new JPanel();
+  // Creation du panel d'affichage de la regression
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    panel = new JPanel();
 
-		List<String> data;
-		String absolutePath = null;
+    List<String> data;
 
-		JFileChooser fc = new JFileChooser();
-		fc.showOpenDialog(frame);
-		fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-		if (fc.getSelectedFile() != null) {
-			absolutePath = fc.getSelectedFile().getAbsolutePath();
+    try {
+      data = csvReader.read(frame);
+      if (csvReader.getRowCount() != 2) {
+        throw new Exception("Fichier CSV Invalide");
+      }
 
-			DecimalFormat df = new DecimalFormat();
-			df.setMaximumFractionDigits(5);
+      regression.calculer(data);
 
-			try {
-				// Fichier CSV Seulement
-				if (absolutePath.endsWith(".csv")) {
-					data = csvReader.read(absolutePath);
-					if (csvReader.getRowCount() != 2) {
-						throw new Exception("Fichier CSV Invalide");
-					}
+      JLabel labelRegression = new JLabel("");
+      JLabel labelFormule = new JLabel("");
+      JLabel labelDataList = new JLabel("");
+      JLabel labelEquationSolve = new JLabel("");
 
-					regression.calculer(data);
+      labelRegression.setText("<html>Valeur de b1:  " + regression.getPente() + "<br>Valeur de b2: "
+          + regression.getConstante());
 
-					JLabel labelRegression = new JLabel("");
-					JLabel labelFormule = new JLabel("");
-					JLabel labelDataList = new JLabel("");
-					JLabel labelEquationSolve = new JLabel("");
+      labelFormule.setText("Y = " + regression.getPente() + " * m + " + regression.getConstante());
 
-					labelRegression.setText("<html>Valeur de b1:  " + String.valueOf(df.format(regression.getPente()))
-							+ "<br>Valeur de b2: " + String.valueOf(df.format(regression.getConstante())));
+      labelDataList.setText(html.afficher(data, csvReader.getRowCount()));
 
-					labelFormule.setText("Y = " + String.valueOf(df.format(regression.getPente())) + " * m + "
-							+ String.valueOf(df.format(regression.getConstante())));
+      panel.add(labelRegression);
+      panel.add(labelFormule);
+      panel.add(labelDataList);
 
-					labelDataList.setText(html.afficher(data, csvReader.getRowCount()));
+      // Boutton de requete pour X et Y
+      JButton buttonGetXFromY = new JButton("Trouver X");
+      JButton buttonGetYFromX = new JButton("Trouver Y");
+      buttonGetXFromY.addActionListener(new java.awt.event.ActionListener() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          String value = JOptionPane.showInputDialog(frame, "La valeur de Y ?", null);
+          labelEquationSolve.setText("X = " + regression.calculateXFromY(value));
+        }
+      });
 
-					panel.add(labelRegression);
-					panel.add(labelFormule);
-					panel.add(labelDataList);
+      buttonGetYFromX.addActionListener(new java.awt.event.ActionListener() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+          String value = JOptionPane.showInputDialog(frame, "La valeur de X ?", null);
+          labelEquationSolve.setText("Y = " + regression.calculateYFromX(value));
+        }
+      });
 
-					// Boutton de requete pour X et Y
-					JButton buttonGetXFromY = new JButton("Trouver X");
-					JButton buttonGetYFromX = new JButton("Trouver Y");
-					buttonGetXFromY.addActionListener(new java.awt.event.ActionListener() {
-						@Override
-						public void actionPerformed(java.awt.event.ActionEvent evt) {
-							String value = JOptionPane.showInputDialog(frame, "La valeur de Y ?", null);
-							try {
-								double y = Double.parseDouble(value.replaceAll(",", "."));
+      panel.add(buttonGetXFromY);
+      panel.add(buttonGetYFromX);
+      panel.add(labelEquationSolve);
 
-								labelEquationSolve
-										.setText("X = " + String.valueOf(df.format(regression.calculateXFromY(y))));
-							} catch (Exception ex) {
-								System.out.println(ex.getMessage());
-							}
-						}
-					});
+      frame.setPanel(panel);
+    } catch (Exception ex) {
+      System.out.println(ex.getMessage());
+    }
 
-					buttonGetYFromX.addActionListener(new java.awt.event.ActionListener() {
-						@Override
-						public void actionPerformed(java.awt.event.ActionEvent evt) {
-							String value = JOptionPane.showInputDialog(frame, "La valeur de X ?", null);
-							try {
-								double x = Double.parseDouble(value.replaceAll(",", "."));
-
-								labelEquationSolve
-										.setText("Y = " + String.valueOf(df.format(regression.calculateYFromX(x))));
-							} catch (Exception ex) {
-								System.out.println(ex.getMessage());
-							}
-						}
-					});
-
-					panel.add(buttonGetXFromY);
-					panel.add(buttonGetYFromX);
-					panel.add(labelEquationSolve);
-
-					frame.setPanel(panel);
-
-				} else {
-					throw new Exception("Erreur: Le fichier selectionne n'est pas un fichier CSV.");
-				}
-			} catch (Exception ex) {
-				System.out.println(ex.getMessage());
-			}
-
-		}
-	}
+  }
 }

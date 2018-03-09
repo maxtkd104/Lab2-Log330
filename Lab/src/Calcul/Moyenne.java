@@ -1,5 +1,6 @@
 package Calcul;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -10,10 +11,11 @@ import java.util.List;
  */
 public class Moyenne implements IMethodeMath {
 
-  private double Moyenne;
+  private double MoyenneValue;
+  private String Moyenne;
 
   @Override
-  public double calculer(List<String> listDonner, double inputValue) {
+  public void calculer(List<String> listDonner, double inputValue) {
 
     double somme = 0;
     double moyenne = 0.0;
@@ -25,19 +27,25 @@ public class Moyenne implements IMethodeMath {
       for (int i = 1; i <= arraySize; i++) {
         somme += Integer.parseInt(listDonner.get(i));
       }
-      Moyenne = (1.0 / (arraySize)) * somme;
+      MoyenneValue = (1.0 / (arraySize)) * somme;
     } catch (Exception ex) {
 
-      moyenne = 0.0;
+      MoyenneValue = 0.0;
     }
 
-
-    return Moyenne;
-
+    DecimalFormat df = new DecimalFormat();
+    df.setMaximumFractionDigits(5);
+    Moyenne = df.format(MoyenneValue);
   }
 
-  public double get() {
+  @Override
+  public String getString() {
     return Moyenne;
+  }
+
+  @Override
+  public double getValue() {
+    return MoyenneValue;
   }
 
 }

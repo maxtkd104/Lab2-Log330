@@ -3,14 +3,13 @@ package Test;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
-
 import Calcul.*;
 
 public class VarianceTest {
 
-  String csvLowerBound = "CSV_TEST/LowerBound.csv";
-  String csvUpperBound = "CSV_TEST/UpperBound.csv";
-  String csvInvalide = "CSV_TEST/Invalide.csv";
+  String csvLowerBound = "CSV/TEST_VARIANCE/LowerBound.csv";
+  String csvUpperBound = "CSV/TEST_VARIANCE/UpperBound.csv";
+  String csvInvalide = "CSV/TEST_VARIANCE/Invalide.csv";
   CSVReader reader = new CSVReader();
 
 
@@ -24,9 +23,10 @@ public class VarianceTest {
     System.out.println("\n\tTest: Variance LowerBound");
     double moyenne = 253.9;
     IMethodeMath variance = new Calcul.Variance();
-
-    List<String> listData = reader.read(csvLowerBound);
-    double var = variance.calculer(listData, moyenne);
+    reader.setPath(csvLowerBound);
+    List<String> listData = reader.read(null);
+    variance.calculer(listData, moyenne);
+    double var = variance.getValue();
 
     String result = String.valueOf(var);
 
@@ -54,8 +54,10 @@ public class VarianceTest {
     double moyenne = 1580.5;
     IMethodeMath variance = new Calcul.Variance();
     CSVReader reader = new CSVReader();
-    List<String> listData = reader.read(csvUpperBound);
-    double var = variance.calculer(listData, moyenne);
+    reader.setPath(csvUpperBound);
+    List<String> listData = reader.read(null);
+    variance.calculer(listData, moyenne);
+    double var = variance.getValue();
 
     String result = String.valueOf(var);
 
@@ -85,8 +87,10 @@ public class VarianceTest {
     CSVReader reader = new CSVReader();
 
     double var = 0.0;
-    List<String> listData = reader.read(csvInvalide);
-    var = variance.calculer(listData, moyenne);
+    reader.setPath(csvInvalide);
+    List<String> listData = reader.read(null);
+    variance.calculer(listData, moyenne);
+    var = variance.getValue();
 
 
     String result = String.valueOf(var);

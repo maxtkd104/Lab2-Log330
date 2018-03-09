@@ -1,17 +1,19 @@
 package Calcul;
 
 import java.util.List;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Correlation implements IMethodeMath {
 
   List<String> dataX;
   List<String> dataY;
-  double correlation;
+  String correlation;
+  double correlationValue;
   int n = 0;
 
   @Override
-  public double calculer(List<String> listDonner, double inputValue) {
+  public void calculer(List<String> listDonner, double inputValue) {
 
     dataX = new ArrayList<String>();
     dataY = new ArrayList<String>();
@@ -67,14 +69,16 @@ public class Correlation implements IMethodeMath {
       // Calcul de la correlation
       double upper = (n * sumXY) - (sumX * sumY);
       double lower = sqrt((n * sumSquareX - (sumX * sumX)) * (n * sumSquareY - (sumY * sumY)));
-      correlation = upper / lower;
+      correlationValue = upper / lower;
+      
 
     } catch (Exception ex) {
-      correlation = 0.0;
+      correlationValue = 0.0;
     }
-
-
-    return correlation;
+    
+    DecimalFormat df = new DecimalFormat();
+    df.setMaximumFractionDigits(5);
+    correlation = df.format(correlationValue);
   }
 
 
@@ -92,9 +96,15 @@ public class Correlation implements IMethodeMath {
   }
 
   @Override
-  public double get() {
+  public String getString() {
 
     return correlation;
+  }
+
+
+  @Override
+  public double getValue() {
+    return correlationValue;
   }
 
 }

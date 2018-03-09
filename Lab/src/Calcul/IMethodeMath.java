@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface IMethodeMath {
 
-  public double calculer(List<String> listDonner, double inputValue);
+  public void calculer(List<String> listDonner, double inputValue);
 
-  public double get();
+  public String getString();
+  
+  public double getValue();
 }
