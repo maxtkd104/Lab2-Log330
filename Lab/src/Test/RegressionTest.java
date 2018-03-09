@@ -61,11 +61,11 @@ public class RegressionTest {
     regression.calculer(listData);
 
     String b1 = regression.getPente();
-    String b2 = regression.getConstante().replaceAll(" ","");
+    String b2 = regression.getConstante();
 
 
-    String resultb1 = "9.06666";
-    String resultb2 = "-13751.27263";
+    String resultb1 = "-0.29091";
+    String resultb2 = "993.86771";
 
 
     if (b1.equals(resultb1) && b2.equals(resultb2)) {

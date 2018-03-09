@@ -97,7 +97,7 @@ public class Regression {
 
       DecimalFormat df = new DecimalFormat();
       df.setMaximumFractionDigits(5);
-      ret = df.format(penteValue * xInteger + constanteValue).replaceAll(",", ".");
+      ret = df.format(penteValue * xInteger + constanteValue).replaceAll(",", ".").replaceAll(" ","");
     } catch (Exception ex) {
       ret = "0.0";
     }
