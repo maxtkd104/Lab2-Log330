@@ -37,7 +37,7 @@ public class CSVReader {
       absolutePath = path;
     }
     
-    if (path != null || path != "") {
+    if (absolutePath != null && absolutePath != "") {
 
       File file = new File(absolutePath);
 
