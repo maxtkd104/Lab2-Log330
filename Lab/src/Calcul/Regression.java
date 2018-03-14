@@ -87,13 +87,19 @@ public class Regression {
     }
   }
 
+  
+  /**
+   * Trouver la valeur de Y
+   * @param x
+   * @return
+   */
   public String calculateYFromX(String x) {
     String ret = "";
 
     try {
       double xInteger = Double.parseDouble(x.replaceAll(",", "."));
       double penteValue = Double.parseDouble(pente);
-      double constanteValue = Double.parseDouble(pente);
+      double constanteValue = Double.parseDouble(constante);
 
       DecimalFormat df = new DecimalFormat();
       df.setMaximumFractionDigits(5);
@@ -105,6 +111,11 @@ public class Regression {
     return ret;
   }
 
+  /**
+   * Trouver la valeur de X
+   * @param y
+   * @return
+   */
   public String calculateXFromY(String y) {
     String ret = "";
 

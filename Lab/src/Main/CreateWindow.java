@@ -7,9 +7,6 @@ import Menu.MenuBar;
 
 public class CreateWindow extends JFrame {
 
-  private List<String> data;
-  private IMethodeMath Correlation;
-  private Regression Regression;
   private JPanel currentPanel;
   public int i = 0;
 
