@@ -158,7 +158,7 @@ public class RegressionTest {
     String y = regression.calculateYFromX("58");
 
 
-    String result = "101.94787";
+    String result = "77.66741";
 
 
     if (y.equals(result)) {
