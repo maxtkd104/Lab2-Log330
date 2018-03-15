@@ -36,7 +36,7 @@ public class CSVReader {
     } else {
       absolutePath = path;
     }
-    
+
     if (absolutePath != null && absolutePath != "") {
 
       File file = new File(absolutePath);
@@ -69,8 +69,7 @@ public class CSVReader {
   /**
    * Set the path manually
    */
-  public void setPath(String pathToSet)
-  {
+  public void setPath(String pathToSet) {
     path = pathToSet;
   }
 

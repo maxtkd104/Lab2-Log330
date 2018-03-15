@@ -13,6 +13,6 @@ public interface IMethodeMath {
   public void calculer(List<String> listDonner, double inputValue);
 
   public String getString();
-  
+
   public double getValue();
 }

@@ -116,7 +116,7 @@ public class RegressionTest {
     }
 
   }
-  
+
   /***
    * Test trouver X avec Y
    */
@@ -135,15 +135,15 @@ public class RegressionTest {
 
 
     if (x.equals(result)) {
-      System.out
-          .println("Succes: La valeur " + x + " correspond a la valeur attendu: " + result);
-      
+      System.out.println("Succes: La valeur " + x + " correspond a la valeur attendu: " + result);
+
     } else {
-      System.out.println("Erreur: La valeur " + x + " ne correspond pas a la valeur attendu: " + result);
+      System.out
+          .println("Erreur: La valeur " + x + " ne correspond pas a la valeur attendu: " + result);
       fail(x + " ne correspond pas a la valeur attendu " + result);
     }
   }
-  
+
   /***
    * Test trouver Y avec X
    */
@@ -162,11 +162,11 @@ public class RegressionTest {
 
 
     if (y.equals(result)) {
-      System.out
-          .println("Succes: La valeur " + y + " correspond a la valeur attendu: " + result);
-      
+      System.out.println("Succes: La valeur " + y + " correspond a la valeur attendu: " + result);
+
     } else {
-      System.out.println("Erreur: La valeur " + y + " ne correspond pas a la valeur attendu: " + result);
+      System.out
+          .println("Erreur: La valeur " + y + " ne correspond pas a la valeur attendu: " + result);
       fail(y + " ne correspond pas a la valeur attendu " + result);
     }
   }

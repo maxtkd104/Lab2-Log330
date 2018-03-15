@@ -76,7 +76,7 @@ public class CorrelationTest {
     List<String> listData = reader.read(null);
     correlation.calculer(listData, 0.0);
     double corre = correlation.getValue();
-    
+
     String result = String.valueOf(corre);
 
     String valeurAttendu = "0.0";

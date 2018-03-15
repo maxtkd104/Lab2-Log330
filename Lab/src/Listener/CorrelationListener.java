@@ -44,7 +44,7 @@ public class CorrelationListener implements ActionListener {
 
       Correlation.calculer(data, 0.0);
       ValeurCorrelation valeurCorrelation = new ValeurCorrelation();
-      
+
       double correlationValue = Correlation.getValue();
       String valeurNomimal = valeurCorrelation.getNominalValue(Correlation.getValue());
 

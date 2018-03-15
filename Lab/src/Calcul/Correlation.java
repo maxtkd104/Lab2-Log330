@@ -70,12 +70,12 @@ public class Correlation implements IMethodeMath {
       double upper = (n * sumXY) - (sumX * sumY);
       double lower = sqrt((n * sumSquareX - (sumX * sumX)) * (n * sumSquareY - (sumY * sumY)));
       correlationValue = upper / lower;
-      
+
 
     } catch (Exception ex) {
       correlationValue = 0.0;
     }
-    
+
     DecimalFormat df = new DecimalFormat();
     df.setMaximumFractionDigits(5);
     correlation = df.format(correlationValue);
