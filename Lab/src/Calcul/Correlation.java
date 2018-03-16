@@ -29,9 +29,9 @@ public class Correlation implements IMethodeMath {
       // Remplir les tableaux X et Y
       for (int i = 1; i <= n; i++) {
         String[] split = listDonner.get(i).split(";");
-        dataX.add(split[0].replaceAll(";", ""));// Valeur X
+        dataX.add(split[0].replaceAll(";", "").replaceAll(",", "."));// Valeur X
 
-        dataY.add(split[1].replaceAll(";", ""));// Valeur Y
+        dataY.add(split[1].replaceAll(";", "").replaceAll(",", "."));// Valeur Y
 
       }
 

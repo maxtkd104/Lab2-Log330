@@ -12,6 +12,8 @@ public class ValeurCorrelation {
   public String getNominalValue(double correlation) {
     String output = "";
 
+    if (correlation < 0.0)
+      output = "Coeffecient negatif";
     if (correlation >= 0.0 && correlation < 0.2)
       output = "Nulle a faible";
     if (correlation >= 0.2 && correlation < 0.4)

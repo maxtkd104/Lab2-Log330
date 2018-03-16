@@ -13,7 +13,7 @@ public class CSVReader {
 
 
   private int rowCount = 0;
-  private String path = "";
+  private String path = "";//"E:\\Documents\\LOG330\\Lab 5 - Log 330\\TP5 - Données de test.csv";
 
   /**
    * Lis un fichier CSV ligne par ligne et retourne les donnees sous forme de tableu de int
@@ -43,15 +43,22 @@ public class CSVReader {
 
       try {
         Scanner inputStream = new Scanner(file);
+        inputStream.useDelimiter("\r");
         while (inputStream.hasNext()) {
           String dataText = inputStream.next();
-          data.add(dataText.replaceAll(",", "."));
+          data.add(dataText.replaceAll("\n", ""));
 
         }
         inputStream.close();
 
-
-        String[] parts = data.get(1).split(";");
+        
+        String[] parts = null;  
+        
+        if(data.get(1).contains(";"))
+          parts = data.get(1).split(";");
+        else
+          parts = data.get(1).split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+        
         rowCount = parts.length;
 
 

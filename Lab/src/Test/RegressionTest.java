@@ -30,7 +30,7 @@ public class RegressionTest {
 
 
     String resultb1 = "-0.03739";
-    String resultb2 = "214.96982";;
+    String resultb2 = "214.96982";
 
 
     if (b1.startsWith(resultb1) && b2.startsWith(resultb2)) {

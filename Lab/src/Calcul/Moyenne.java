@@ -25,7 +25,7 @@ public class Moyenne implements IMethodeMath {
 
 
       for (int i = 1; i <= arraySize; i++) {
-        somme += Integer.parseInt(listDonner.get(i));
+        somme += Integer.parseInt(listDonner.get(i).replaceAll(",", "."));
       }
       MoyenneValue = (1.0 / (arraySize)) * somme;
     } catch (Exception ex) {
