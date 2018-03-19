@@ -13,7 +13,7 @@ public class CSVReader {
 
 
   private int rowCount = 0;
-  private String path = "";//"E:\\Documents\\LOG330\\Lab 5 - Log 330\\TP5 - Données de test.csv";
+  private String path = "";
 
   /**
    * Lis un fichier CSV ligne par ligne et retourne les donnees sous forme de tableu de int
