@@ -39,7 +39,7 @@ public class CSVReader {
 
     if (absolutePath != null && absolutePath != "") {
 
-      File file = new File(absolutePath);
+      File file = new File(absolutePath); 
 
       try {
         Scanner inputStream = new Scanner(file);
