@@ -38,8 +38,8 @@ public class CorrelationEffortNoteTest {
       System.out.println(
           "Succes: Les valeurs correspondent aux valeurs attendues.");
     } else {
-      System.out.println("Erreur: Les valeurs testés ne correspondent pas aux valeurs attendues.");
-      fail("Les valeurs testés ne correspond pas aux valeurs attendues.");
+      System.out.println("Erreur: Les valeurs testes ne correspondent pas aux valeurs attendues.");
+      fail("Les valeurs testes ne correspond pas aux valeurs attendues.");
     }
 
   }
@@ -70,8 +70,8 @@ public class CorrelationEffortNoteTest {
       System.out.println(
           "Succes: Les valeurs correspondent aux valeurs attendues.");
     } else {
-      System.out.println("Erreur: Les valeurs testés ne correspondent pas aux valeurs attendues.");
-      fail("Les valeurs testés ne correspond pas aux valeurs attendues.");
+      System.out.println("Erreur: Les valeurs testes ne correspondent pas aux valeurs attendues.");
+      fail("Les valeurs testes ne correspond pas aux valeurs attendues.");
     }
 
   }
@@ -102,8 +102,8 @@ public class CorrelationEffortNoteTest {
       System.out.println(
           "Succes: Les valeurs correspondent aux valeurs attendues.");
     } else {
-      System.out.println("Erreur: Les valeurs testés ne correspondent pas aux valeurs attendues.");
-      fail("Les valeurs testés ne correspond pas aux valeurs attendues.");
+      System.out.println("Erreur: Les valeurs testes ne correspondent pas aux valeurs attendues.");
+      fail("Les valeurs testes ne correspond pas aux valeurs attendues.");
     }
   }
 }
