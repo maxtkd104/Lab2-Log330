@@ -68,57 +68,64 @@ public class CorrelationEffortNote implements IMethodeMath {
     double sumXY = 0.0; // Somme des X et Y
     double sumSquareX = 0.0; // Somme des carres de X
     double sumSquareY = 0.0; // Somme des carres de Y
+    String retour = "0.0";
 
-    // Remplir les tableaux X et Y
-    for (int i = startLineIndex; i <= nLine + 1; i++) {
-      String[] split = listDonner.get(i).split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-      list.add(split[colIndex].replaceAll(";", "").replaceAll("\"", "").replaceAll(",", "."));// Valeur
-                                                                                              // X
+    try {
+      // Remplir les tableaux X et Y
+      for (int i = startLineIndex; i <= nLine + 1; i++) {
+        String[] split = listDonner.get(i).split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+        list.add(split[colIndex].replaceAll(";", "").replaceAll("\"", "").replaceAll(",", "."));// Valeur
+                                                                                                // X
 
-      dataY.add(split[7].replaceAll(";", "").replaceAll(",", "."));// Valeur Y
+        dataY.add(split[7].replaceAll(";", "").replaceAll(",", ".").replaceAll("\"", ""));// Valeur
+                                                                                          // Y
 
+      }
+
+      // Calcuer la somme des X
+      for (int x = 0; x < nLine; x++) {
+        sumX += Double.parseDouble(list.get(x));
+      }
+
+      // Calcuer la somme des Y
+      for (int y = 0; y < nLine; y++) {
+        sumY += Double.parseDouble(dataY.get(y));
+      }
+
+      // Somme X * Y
+      for (int i = 0; i < nLine; i++) {
+        double x = Double.parseDouble(list.get(i));
+        double y = Double.parseDouble(dataY.get(i));
+        sumXY += x * y;
+      }
+
+      // Calcuer la somme des carres de X
+      for (int x = 0; x < nLine; x++) {
+        double value = Double.parseDouble(list.get(x));
+        sumSquareX += value * value;
+      }
+
+      // Calcuer la somme des carres de Y
+      for (int y = 0; y < nLine; y++) {
+        double value = Double.parseDouble(dataY.get(y));
+        sumSquareY += value * value;
+      }
+
+
+
+      // Calcul de la correlation
+      double upper = (nLine * sumXY) - (sumX * sumY);
+      double lower =
+          sqrt((nLine * sumSquareX - (sumX * sumX)) * (nLine * sumSquareY - (sumY * sumY)));
+
+      correlationValue = upper / lower;
+      DecimalFormat df = new DecimalFormat();
+      df.setMaximumFractionDigits(5);
+      retour = df.format(correlationValue);
+    } catch (Exception ex) {
+      retour = "0.0";
     }
-
-    // Calcuer la somme des X
-    for (int x = 0; x < nLine; x++) {
-      sumX += Double.parseDouble(list.get(x));
-    }
-
-    // Calcuer la somme des Y
-    for (int y = 0; y < nLine; y++) {
-      sumY += Double.parseDouble(dataY.get(y));
-    }
-
-    // Somme X * Y
-    for (int i = 0; i < nLine; i++) {
-      double x = Double.parseDouble(list.get(i));
-      double y = Double.parseDouble(dataY.get(i));
-      sumXY += x * y;
-    }
-
-    // Calcuer la somme des carres de X
-    for (int x = 0; x < nLine; x++) {
-      double value = Double.parseDouble(list.get(x));
-      sumSquareX += value * value;
-    }
-
-    // Calcuer la somme des carres de Y
-    for (int y = 0; y < nLine; y++) {
-      double value = Double.parseDouble(dataY.get(y));
-      sumSquareY += value * value;
-    }
-
-
-
-    // Calcul de la correlation
-    double upper = (nLine * sumXY) - (sumX * sumY);
-    double lower =
-        sqrt((nLine * sumSquareX - (sumX * sumX)) * (nLine * sumSquareY - (sumY * sumY)));
-
-    correlationValue = upper / lower;
-    DecimalFormat df = new DecimalFormat();
-    df.setMaximumFractionDigits(5);
-    return df.format(correlationValue);
+    return retour;
   }
 
 

@@ -17,7 +17,7 @@ public class CorrelationTest {
    */
   @Test
   public void testCorrelationLowerBound() {
-    System.out.println("\n\tTest: Ecart-Type Lower Bound");
+    System.out.println("\n\tTest: Correlation Lower Bound");
     IMethodeMath correlation = new Correlation();
     reader.setPath(csvLowerBound);
     List<String> listData = reader.read(null);
@@ -44,7 +44,7 @@ public class CorrelationTest {
    */
   @Test
   public void testCorrelationUpperBound() {
-    System.out.println("\n\tTest: Ecart-Type Upper Bound");
+    System.out.println("\n\tTest: Correlation Upper Bound");
     IMethodeMath correlation = new Correlation();
     reader.setPath(csvUpperBound);
     List<String> listData = reader.read(null);
