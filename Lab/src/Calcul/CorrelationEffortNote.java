@@ -119,6 +119,10 @@ public class CorrelationEffortNote implements IMethodeMath {
           sqrt((nLine * sumSquareX - (sumX * sumX)) * (nLine * sumSquareY - (sumY * sumY)));
 
       correlationValue = upper / lower;
+      
+      if (correlationValue < 0.0)
+        correlationValue = correlationValue * -1;
+      
       DecimalFormat df = new DecimalFormat();
       df.setMaximumFractionDigits(5);
       retour = df.format(correlationValue);

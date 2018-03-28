@@ -39,7 +39,7 @@ public class CSVReader {
 
     if (absolutePath != null && absolutePath != "") {
 
-      File file = new File(absolutePath); 
+      File file = new File(absolutePath);
 
       try {
         Scanner inputStream = new Scanner(file);
@@ -51,14 +51,14 @@ public class CSVReader {
         }
         inputStream.close();
 
-        
-        String[] parts = null;  
-        
-        if(data.get(1).contains(";"))
+
+        String[] parts = null;
+
+        if (data.get(1).contains(";"))
           parts = data.get(1).split(";");
         else
           parts = data.get(1).split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-        
+
         rowCount = parts.length;
 
 

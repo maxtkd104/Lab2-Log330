@@ -44,8 +44,10 @@ public class CorrelationEffortNoteListener implements ActionListener {
 
       CorrelationEffNote.calculer(data, 0.0);
       JLabel labelCorrelation = new JLabel("");
+      
 
       labelCorrelation.setText(html.afficherEffortNote(CorrelationEffNote.getString()));
+     
 
 
       panel.add(labelCorrelation);

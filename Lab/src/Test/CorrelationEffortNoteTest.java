@@ -17,26 +17,24 @@ public class CorrelationEffortNoteTest {
    */
   @Test
   public void testCorrelationLowerBound() {
-     System.out.println("\n\tTest: Correlation Lower Bound");
+    System.out.println("\n\tTest: Correlation Lower Bound");
     IMethodeMath correlation = new CorrelationEffortNote();
     reader.setPath(csvLowerBound);
     List<String> listData = reader.read(null);
     correlation.calculer(listData, 0.0);
     String[] split = correlation.getString().split(";");
-    String[] arrayValue = {"-0.19842","0.14409","-0.09214","-0.05657","0.19227","-0.03043"};
+    String[] arrayValue = {"0.19842", "0.14409", "0.09214", "0.05657", "0.19227", "0.03043"};
     boolean pass = true;
-    
-    for(int i = 0; i < split.length;i++)
-    {
+
+    for (int i = 0; i < split.length; i++) {
       split[i] = split[i].replaceAll(";", "");
-      if(!split[i].equals(arrayValue[i]))
+      if (!split[i].equals(arrayValue[i]))
         pass = false;
     }
 
 
     if (pass) {
-      System.out.println(
-          "Succes: Les valeurs correspondent aux valeurs attendues.");
+      System.out.println("Succes: Les valeurs correspondent aux valeurs attendues.");
     } else {
       System.out.println("Erreur: Les valeurs testes ne correspondent pas aux valeurs attendues.");
       fail("Les valeurs testes ne correspond pas aux valeurs attendues.");
@@ -55,20 +53,18 @@ public class CorrelationEffortNoteTest {
     List<String> listData = reader.read(null);
     correlation.calculer(listData, 0.0);
     String[] split = correlation.getString().split(";");
-    String[] arrayValue = {"-0.13888","-0.13031","-0.17301","-0.06188","0.19196","-0.06072"};
+    String[] arrayValue = {"0.13888", "0.13031", "0.17301", "0.06188", "0.19196", "0.06072"};
     boolean pass = true;
-    
-    for(int i = 0; i < split.length;i++)
-    {
+
+    for (int i = 0; i < split.length; i++) {
       split[i] = split[i].replaceAll(";", "");
-      if(!split[i].equals(arrayValue[i]))
+      if (!split[i].equals(arrayValue[i]))
         pass = false;
     }
 
 
     if (pass) {
-      System.out.println(
-          "Succes: Les valeurs correspondent aux valeurs attendues.");
+      System.out.println("Succes: Les valeurs correspondent aux valeurs attendues.");
     } else {
       System.out.println("Erreur: Les valeurs testes ne correspondent pas aux valeurs attendues.");
       fail("Les valeurs testes ne correspond pas aux valeurs attendues.");
@@ -87,20 +83,18 @@ public class CorrelationEffortNoteTest {
     List<String> listData = reader.read(null);
     correlation.calculer(listData, 0.0);
     String[] split = correlation.getString().split(";");
-    String[] arrayValue = {"0.0","0.0","0.0","0.0","0.0","0.0"};
+    String[] arrayValue = {"0.0", "0.0", "0.0", "0.0", "0.0", "0.0"};
     boolean pass = true;
-    
-    for(int i = 0; i < split.length;i++)
-    {
+
+    for (int i = 0; i < split.length; i++) {
       split[i] = split[i].replaceAll(";", "");
-      if(!split[i].equals(arrayValue[i]))
+      if (!split[i].equals(arrayValue[i]))
         pass = false;
     }
 
 
     if (pass) {
-      System.out.println(
-          "Succes: Les valeurs correspondent aux valeurs attendues.");
+      System.out.println("Succes: Les valeurs correspondent aux valeurs attendues.");
     } else {
       System.out.println("Erreur: Les valeurs testes ne correspondent pas aux valeurs attendues.");
       fail("Les valeurs testes ne correspond pas aux valeurs attendues.");
