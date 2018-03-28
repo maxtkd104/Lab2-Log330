@@ -62,7 +62,7 @@ public class AffichageHTML {
       ret += "<td><a style=\"color: Red\">Correlation C" + (i + 1)
           + ":</a><br><a style=\"color: green\">Valeur de correlation: </a></td>" + "<td>" + "<td>"
           + split[i].replaceAll(";", "") + "<br>"
-          + val.getNominalValue(Double.parseDouble(split[i].replaceAll(";", ""))) + "</td></tr>";
+          + val.getNominalValueEffortNote(Double.parseDouble(split[i].replaceAll(";", ""))) + "</td></tr>";
     }
 
     ret += "</table></html>";

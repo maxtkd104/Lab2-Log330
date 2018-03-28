@@ -17,9 +17,7 @@ public class ValeurCorrelation {
       abs = correlation * -1;
     else
       abs = correlation;
-
-    if (abs < 0.0)
-      output = "Coeffecient negatif";
+    
     if (abs >= 0.0 && abs < 0.2)
       output = "Nulle a faible";
     if (abs >= 0.2 && abs < 0.4)
@@ -30,6 +28,29 @@ public class ValeurCorrelation {
       output = "Forte a tres forte";
     if (abs >= 0.9 && abs <= 1)
       output = "Tres forte a parfaite";
+
+    return output;
+  }
+  
+  public String getNominalValueEffortNote(double correlation) {
+    String output = "";
+    double abs = 0.0;
+
+    if (correlation < 0.0)
+      abs = correlation * -1;
+    else
+      abs = correlation;
+    
+    if (abs >= 0.0 && abs < 0.2)
+      output = "Cette semaine à une influence nulle a faible sur la note";
+    if (abs >= 0.2 && abs < 0.4)
+      output = "Cette semaine à une influence Faible a moyenne sur la note";
+    if (abs >= 0.4 && abs < 0.7)
+      output = "Cette semaine à une influence Moyenne a forte sur la note";
+    if (abs >= 0.7 && abs < 0.9)
+      output = "Cette semaine à une influence Forte a tres forte sur la note";
+    if (abs >= 0.9 && abs <= 1)
+      output = "Cette semaine à une influence Tres forte a parfaite sur la note";
 
     return output;
   }
