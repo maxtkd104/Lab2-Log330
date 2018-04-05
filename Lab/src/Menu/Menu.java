@@ -12,10 +12,12 @@ public class Menu extends JMenu {
     CorrelationMenuItem menuCor = new CorrelationMenuItem(frame);
     RegressionMenuItem menuReg = new RegressionMenuItem(frame);
     CorrelationEffortNoteMenuItem menuCorEffNote = new CorrelationEffortNoteMenuItem(frame);
+    IntervalConfianceMenuItem menuIntervalConfiance = new IntervalConfianceMenuItem(frame);
 
     add(menuVar);
     add(menuCor);
     add(menuReg);
     add(menuCorEffNote);
+    add(menuIntervalConfiance);
   }
 }
