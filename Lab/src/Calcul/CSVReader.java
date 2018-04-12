@@ -26,7 +26,7 @@ public class CSVReader {
     List<String> data = new ArrayList<String>();
     String absolutePath = null;
     // Aucun fichier n'est specifie
-    if (path == "") {
+    if (path.equals("")) {
       JFileChooser fc = new JFileChooser();
       fc.showOpenDialog(frame);
       fc.setFileSelectionMode(JFileChooser.FILES_ONLY);

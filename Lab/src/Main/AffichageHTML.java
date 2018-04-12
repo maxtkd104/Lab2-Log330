@@ -69,4 +69,20 @@ public class AffichageHTML {
 
     return ret;
   }
+  
+  public String afficherInterval(String data) {
+    String[] split = data.split("-");
+    String ret = "<html><table><tr>";
+      ret += "<td><a style=\"color: Red\">Interval 90%"
+          + ":</a><br><a style=\"color: Red\">Interval 70%"
+          + ":</a></td>" +"<td>"
+          + split[0]
+          + "<br>" + split[1] +"</td></td></tr>";
+    
+
+    ret += "</table></html>";
+
+    return ret;
+  }
+
 }

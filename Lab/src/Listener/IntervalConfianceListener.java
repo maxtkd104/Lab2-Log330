@@ -15,13 +15,13 @@ public class IntervalConfianceListener implements ActionListener {
   JPanel panel;
   CreateWindow frame;
   CSVReader csvReader;
-  IMethodeMath CorrelationEffNote;
+  IMethodeMath IntervalConfiance;
   AffichageHTML html;
 
   public IntervalConfianceListener(CreateWindow frame) {
     this.frame = frame;
     csvReader = new CSVReader();
-    CorrelationEffNote = new CorrelationEffortNote();
+    IntervalConfiance = new IntervalConfiance();
     html = new AffichageHTML();
   }
 
@@ -38,19 +38,19 @@ public class IntervalConfianceListener implements ActionListener {
 
     try {
       data = csvReader.read(frame);
-      if (csvReader.getRowCount() != 8) {
+      if (csvReader.getRowCount() != 2) {
         throw new Exception("Fichier CSV Invalide");
       }
 
-      CorrelationEffNote.calculer(data, 0.0);
-      JLabel labelCorrelation = new JLabel("");
+      IntervalConfiance.calculer(data, 0.0);
+      JLabel labelInterval = new JLabel("");
       
-
-      labelCorrelation.setText(html.afficherEffortNote(CorrelationEffNote.getString()));
+      
+      labelInterval.setText(html.afficherInterval(IntervalConfiance.getString()));
      
 
 
-      panel.add(labelCorrelation);
+      panel.add(labelInterval);
       frame.setPanel(panel);
 
     } catch (Exception ex) {
