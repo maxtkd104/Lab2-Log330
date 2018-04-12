@@ -1,7 +1,7 @@
 package Main;
 
 /**
- * Cette calsse permet de determiner la valeur du lien nominal d'une correlation
+ * Cette classe permet de determiner la valeur du lien nominal d'une correlation
  * 
  * @author Maxime
  *
@@ -17,7 +17,7 @@ public class ValeurCorrelation {
       abs = correlation * -1;
     else
       abs = correlation;
-    
+
     if (abs >= 0.0 && abs < 0.2)
       output = "Nulle a faible";
     if (abs >= 0.2 && abs < 0.4)
@@ -31,7 +31,7 @@ public class ValeurCorrelation {
 
     return output;
   }
-  
+
   public String getNominalValueEffortNote(double correlation) {
     String output = "";
     double abs = 0.0;
@@ -40,7 +40,7 @@ public class ValeurCorrelation {
       abs = correlation * -1;
     else
       abs = correlation;
-    
+
     if (abs >= 0.0 && abs < 0.2)
       output = "L'etude de ce chapitre a une influence Nulle a faible sur la note";
     if (abs >= 0.2 && abs < 0.4)
