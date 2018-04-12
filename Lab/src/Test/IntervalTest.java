@@ -23,9 +23,9 @@ public class IntervalTest {
     List<String> listData = reader.read(null);
     Interval.calculer(listData, 0.0);
 
-    String result = Interval.getString();
+    String result = Interval.getString().replace(" ", "");
 
-    String valeurAttendu = "[1 371,36 ; 1 725,45]-[1 251,2 ; 1 845,61]";
+    String valeurAttendu = "[1371,36;1725,45]-[1251,2;1845,61]";
 
     if (result.startsWith(valeurAttendu)) {
       System.out.println(
@@ -48,9 +48,9 @@ public class IntervalTest {
     reader.setPath(csvUpperBound);
     List<String> listData = reader.read(null);
     Interval.calculer(listData, 0.0);
-    String result = Interval.getString();
+    String result = Interval.getString().replace(" ", "");
 
-    String valeurAttendu = "[-894,51 ; 15 495,6]-[-6 456,5 ; 21 057,59]";
+    String valeurAttendu = "[-894,51;15495,6]-[-6456,5;21057,59]";
 
     if (result.startsWith(valeurAttendu)) {
       System.out.println(
@@ -74,9 +74,9 @@ public class IntervalTest {
     List<String> listData = reader.read(null);
     Interval.calculer(listData, 0.0);
 
-    String result = Interval.getString();
+    String result = Interval.getString().replace(" ", "");
 
-    String valeurAttendu = "[0 ; 0]-[0 ; 0]";
+    String valeurAttendu = "[0;0]-[0;0]";
 
     if (result.startsWith(valeurAttendu)) {
       System.out.println(

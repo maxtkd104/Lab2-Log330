@@ -2,6 +2,7 @@ package Calcul;
 
 import java.util.List;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 
 public class IntervalConfiance implements IMethodeMath {
@@ -136,6 +137,9 @@ public class IntervalConfiance implements IMethodeMath {
     }
 
     DecimalFormat df = new DecimalFormat();
+    DecimalFormatSymbols symbols = df.getDecimalFormatSymbols();
+    symbols.setGroupingSeparator(' ');
+    df.setDecimalFormatSymbols(symbols);
     df.setMaximumFractionDigits(2);
     interval90 = "[" + df.format(lowerValue90) + " ; " + df.format(upperValue90) + "]";
     interval70 = "[" + df.format(lowerValue70) + " ; " + df.format(upperValue70) + "]";
